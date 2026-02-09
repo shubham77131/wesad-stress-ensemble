@@ -69,19 +69,6 @@ This Model: Achieved 82.97% accuracy using a streamlined set of 19 ECG-only HRV 
 
 Context: This performance is highly competitive with studies that utilize multi-modal sensor data (EDA, EMG, and Temperature), proving that high-quality feature engineering and ensemble voting can compensate for a reduced sensor array.
 
-
-## Repository Structure
-```text
-├── src/                  # Extraction and Training Scripts
-│   ├── experiments/      # Individual model baselines (kNN, LGBM, etc.)
-│   ├── preprocessing.py  # Signal processing via NeuroKit2
-│   └── ensemble.py       # Final 82.97% model logic
-├── models/               # Final.joblib model
-├── results/              # CSV performance matrices and plots
-├── requirements.txt      # Required libraries
-└── wesad_global_features.csv  # Final extracted feature set
-
-
 # How To Reproduce The Results
 # Prerequisites
 Python 3.8+
