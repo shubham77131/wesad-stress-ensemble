@@ -1,8 +1,8 @@
 # wesad-stress-ensemble
-Stress detection from wearable HRV signals using a Soft-Voting Ensemble (RF, XGBoost, SVM) on the WESAD dataset. Achieved 82.74% LOSO accuracy.
+Stress detection from wearable HRV signals using a Soft-Voting Ensemble (RF, XGBoost, SVM) on the WESAD dataset. Achieved 82.97% LOSO accuracy.
 
 # Abstract
-This project implements a robust machine learning pipeline to detect psychological stress using heart rate variability (HRV) signals from the WESAD dataset. By employing a multi-model ensemble, addressing the challenge of inter-subject physiological variability.
+This project implements a robust machine learning pipeline to detect psychological stress using heart rate variability (HRV) signals from the WESAD dataset. By employing a multi-model ensemble to address the challenge of inter-subject physiological variability.
 
 # Dataset & Features
 Dataset: (Wearable Stress and Affect Detection).
@@ -41,6 +41,7 @@ Subject Sensitivity Analysis: Performance for every individual subject was track
 # Internal Performance Leaderboard
 To validate the architecture of the stress detection system, six distinct modeling strategies were evaluated using a Leave-One-Subject-Out (LOSO) cross-validation protocol.
 
+
 | Model Name | Mean Accuracy | Best Subject Score | Worst Subject Score | Stress Precision | Stress Recall | Notes |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | **kNN Baseline** | 0.7955 | 1 (S16) | 0.5161 (S10) | 0.69 | 0.75 | Good baseline, but lower accuracy compared to tree-based models. |
@@ -50,6 +51,7 @@ To validate the architecture of the stress detection system, six distinct modeli
 | **XGBoost Baseline** | 0.8184 | 1 (S16) | 0.4839 (S10) | 0.72 | 0.74 | Boosting is slightly better than bagging. |
 | **XGBoost Tuned** | 0.8251 | 1 (S16) | 0.4516 (S10) | 0.73 | 0.76 | Tuning has improved some performance. |
 | **FINAL ENSEMBLE** | **0.8297** | **1 (S16)** | **0.4193 (S10)** | **0.75** | **0.74** | **Best overall accuracy; combines strengths of RF, XGB, and SVM.** |
+
 
  # Analysis of benchmarking process
 The benchmarking process yielded several critical insights into the behavior of physiological data across different ML frameworks:
@@ -67,6 +69,19 @@ This Model: Achieved 82.97% accuracy using a streamlined set of 19 ECG-only HRV 
 
 Context: This performance is highly competitive with studies that utilize multi-modal sensor data (EDA, EMG, and Temperature), proving that high-quality feature engineering and ensemble voting can compensate for a reduced sensor array.
 
+
+## Repository Structure
+```text
+├── src/                  # Extraction and Training Scripts
+│   ├── experiments/      # Individual model baselines (kNN, LGBM, etc.)
+│   ├── preprocessing.py  # Signal processing via NeuroKit2
+│   └── ensemble.py       # Final 82.97% model logic
+├── models/               # Final.joblib model
+├── results/              # CSV performance matrices and plots
+├── requirements.txt      # Required libraries
+└── wesad_global_features.csv  # Final extracted feature set
+
+
 # How To Reproduce The Results
 # Prerequisites
 Python 3.8+
@@ -75,7 +90,7 @@ Dependencies: Install required libraries via: requirements.txt
 
 # Data Preparation
 To run the extraction and training scripts, the WESAD dataset must be structured as follows:
-Download the dataset from . https://archive.ics.uci.edu/dataset/465/wesad+wearable+stress+and+affect+detection
+Download the dataset from - https://archive.ics.uci.edu/dataset/465/wesad+wearable+stress+and+affect+detection
 Organize the folders in the root directory: Ensure to use the absolute file paths to avoid FileNotFoundError
 
 # Execution Flow
