@@ -98,6 +98,7 @@ Model Weighting: Further research into weighted voting (giving more power to SVM
 
 # Analysis of Findings
 Confusion Matrix Analysis: The "Safety" of the Model
+![Ensemble Confusion Matrix](results/ensemble_CM.png)
 The Ensemble Confusion Matrix (LOSO) reveals a model with high "Negative Predictive Value." This is crucial for stress monitoring.
 
 Robust Baseline Detection: The model correctly identified the "Baseline" state 516 times, with only a small fraction of relaxed moments being misclassified as stress.
@@ -108,6 +109,7 @@ Balanced Errors: The False Positives (92) and False Negatives (84) are nearly sy
 
 # Feature Importance: The Physiological Drivers
 The Consolidated Feature Importance (RF + XGB) chart reveals exactly which biological signals the ensemble prioritizes.
+![Feature Importance](results/ensemble_feature_importance.png)
 
 The "NN" Dominance: The top four features are all related to the NN interval (the time between heartbeats). HRV_MinNN and HRV_MeanNN are by far the most influential.
 
